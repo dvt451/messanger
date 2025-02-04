@@ -1,0 +1,182 @@
+//====================================================================================================
+@use "../base" as *;
+@use "../base/variables" as *;
+
+$replyerMessageBackColor: #ffd166;
+$replyerMessageTextColor: #fff;
+$myMessageBackColor: #ff5c8a;
+$myMessageTextColor: #000;
+
+// $replyerMessageBackColor: #fff;
+// $replyerMessageTextColor: #000;
+// $myMessageBackColor: #0078ff;
+// $myMessageTextColor: #fff;
+
+$containerPadding: toRem(30);
+
+.top {
+	background-color: #1e1e1e;
+	display: flex;
+	justify-content: space-between;
+	padding-inline: $containerPadding;
+	padding-block: toRem(20);
+	// .top__column
+
+	&__column {
+		display: flex;
+		align-items: center;
+		gap: toRem(20);
+	}
+
+	// .top__avatar
+
+	&__avatar {
+		width: toRem(70);
+		height: toRem(70);
+		border-radius: 50%;
+		overflow: hidden;
+		border: toRem(2) solid #fff;
+	}
+
+	// .top__info
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(10);
+	}
+
+	// .top__name
+
+	&__name {
+		font-size: toRem(20);
+		display: flex;
+		align-items: center;
+		gap: toRem(15);
+		button {
+			font-size: toRem(30);
+			svg {
+				position: relative;
+				top: toRem(4);
+			}
+		}
+	}
+
+	// .top__status
+
+	&__status {
+		font-size: toRem(12);
+	}
+
+	// .top__edit-name
+
+	&__edit-name {
+	}
+}
+.chat-window {
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
+	background-color: #1e1e1e;
+	color: #ffffff;
+	// .chat-window__messages
+
+	&__messages {
+		height: 100%;
+		overflow-y: auto;
+		background-color: #0d0d0d;
+		padding-inline: $containerPadding;
+		padding-block: toRem(50);
+		padding-top: toRem(110);
+	}
+
+	// .chat-window__messages-wrapper
+
+	&__messages-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		position: relative;
+	}
+}
+.message {
+	padding: toRem(12) toRem(20);
+	margin-block: toRem(10);
+	border-radius: toRem(50);
+	// .message__text
+
+	&__text {
+	}
+
+	// .message__timestamp
+
+	&__timestamp {
+		display: none;
+	}
+}
+
+.input-container {
+	width: 100%;
+	display: flex;
+	padding-inline: toRem(20);
+	padding-block: toRem(10);
+	gap: toRem(10);
+	background-color: #333333;
+	input {
+		flex: 1;
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		background-color: transparent;
+		color: #fff;
+		&::placeholder {
+			color: #bbbbbb;
+		}
+	}
+
+	&__send-button {
+		background-color: $myMessageBackColor;
+		padding: toRem(7) toRem(20);
+		border-radius: toRem(5);
+		&:hover {
+			background-color: #005bb5;
+		}
+	}
+}
+.typing-indicator {
+	position: absolute;
+	top: calc(100% + toRem(15));
+	left: 0;
+	color: #bbbbbb;
+	z-index: 2;
+}
+//========================================================================================================================================================
+
+.typing-indicator {
+	align-self: flex-start;
+}
+.anonymus {
+	.sender {
+		align-self: flex-end;
+	}
+	.replyer {
+		align-self: flex-start;
+	}
+	.input-container__send-button {
+		background-color: $replyerMessageBackColor;
+		color: #000;
+	}
+}
+.sender {
+	align-self: flex-start;
+	background-color: #1e1e1e;
+	color: $replyerMessageTextColor;
+	box-shadow: 0 0 toRem(10) toRem(0) $replyerMessageBackColor;
+}
+
+.replyer {
+	align-self: flex-end;
+	box-shadow: 0 0 toRem(10) toRem(0) $myMessageBackColor;
+	background-color: #1e1e1e;
+	color: #fff;
+}

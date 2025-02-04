@@ -1,0 +1,71 @@
+@use "./variables" as *;
+@use "mixins" as *; // Import variables and make them available globally
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+}
+body {
+	color: var(--main-text-color);
+	line-height: normal;
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+	font-weight: var(--font-wieght);
+	//text-rendering: optimizeLegibility;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	min-width: toRem($minWidth);
+}
+input,
+button,
+textarea {
+	font-family: var(--font-family);
+	font-weight: inherit;
+	font-size: inherit;
+}
+button {
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+}
+ul,
+li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+}

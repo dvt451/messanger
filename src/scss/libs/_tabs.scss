@@ -1,0 +1,22 @@
+.tabs__head {
+   padding: 10px;
+   cursor: pointer;
+   border-bottom: 1px solid #ccc;
+ }
+ 
+ .tabs__head.active {
+   font-weight: bold;
+   border-bottom: 2px solid #000;
+ }
+ 
+ .tabs__body {
+   display: none;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-top: none;
+ }
+ 
+ .tabs__body.active {
+   display: block;
+ }
+ 

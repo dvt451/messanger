@@ -1,0 +1,19 @@
+.marquee{
+   display: flex;
+   .marquee__wrapper{
+      display: flex;
+      animation: runningLeft 35s infinite 0s linear;
+   }
+   &__items{
+
+   }
+}
+
+@keyframes runningLeft {
+   0%{
+      transform: translateX(0%);
+   }
+   100%{
+      transform: translateX(-100%);
+   }
+}

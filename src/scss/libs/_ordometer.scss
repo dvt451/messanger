@@ -1,0 +1,54 @@
+.loading-screen{
+   position: fixed;
+   width: 100%;
+   height: 100dvh;
+   top: 0;
+   left: 0;
+   z-index: 3000;
+   background-color: var(--sec-first-col);
+   &__content{
+      position: absolute;
+      left: toRem(0);
+      bottom: toRem(30);
+      padding: toRem(47) toRem(50);
+   }
+   &__text{
+      color: #000;
+      font-family: 'Unbounded';
+      font-size: 24px;
+      @include adaptiveValue("font-size", 24, 16,$containerWidth,393);
+      line-height: normal;
+      padding-left: toRem(10);
+      padding-bottom: toRem(10);
+      opacity: 0.5;
+   }
+   .counter{
+      display: flex;
+      height: toRem(100);
+      @include adaptiveValue("font-size", 136, 88,$containerWidth,393);
+      line-height: toRem(156);
+      // line-height: normal;
+      clip-path: polygon(0 0,100% 0,100% toRem(136),0 toRem(136));
+      color: var(--colBlack);
+   }
+   .counter-1,.counter-2,.counter-3{
+      position: relative;
+   }
+   .counter-2,.counter-3{
+      margin-left: toRem(-10);
+   }
+   .num1offset1{
+      position: relative;
+      right: toRem(-25);
+   }
+   .num1offset2{
+      position: relative;
+      right: toRem(-10);
+   }
+   .num{
+      color: #000;
+      // line-height: normal;
+   }
+   .digit{
+   }
+}

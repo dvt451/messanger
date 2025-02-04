@@ -1,0 +1,7 @@
+// 1. @use rules
+@use "base/null"; // Import null.scss for reset (reset styles should be imported before styles)
+@use "basic"; // Base styles and templates
+@use "common"; // Common elements
+@use "pages/header"; // Header styles
+@use "pages/footer"; // Footer styles
+@use "pages/home"; // Home page styles
