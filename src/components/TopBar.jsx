@@ -8,15 +8,15 @@ export default function TopBar({ isAnonymous, manName, girlName, updateName, use
 
 	const burgerHandler = () => {
 		setBurgerState(!burgerState);
-	}
+	};
 
 	const handleEditClick = () => {
 		setIsEditing(true);
-	}
+	};
 
 	const handleNameChange = (e) => {
 		setNewName(e.target.value);
-	}
+	};
 
 	const handleSaveName = async () => {
 		setIsEditing(false);
@@ -24,7 +24,7 @@ export default function TopBar({ isAnonymous, manName, girlName, updateName, use
 
 		// Send PUT request to update name in the database
 		try {
-			const response = await fetch('messanger-backend-production.up.railway.app', {
+			const response = await fetch('https://messanger-backend-production.up.railway.app/updateName', {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export default function TopBar({ isAnonymous, manName, girlName, updateName, use
 		} catch (error) {
 			console.error('Error updating name:', error);
 		}
-	}
+	};
 
 	return (
 		<div className='top'>
