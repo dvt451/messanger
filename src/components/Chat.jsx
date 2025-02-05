@@ -23,7 +23,7 @@ export default function Chat() {
 
 	// Connect to WebSocket server
 	useEffect(() => {
-		ws.current = new WebSocket("ws://localhost:5000"); // Connect to WebSocket server
+		ws.current = new WebSocket("ws://messanger-backend.railway.internal"); // Connect to WebSocket server
 
 		ws.current.onopen = () => {
 			setTyping(false); // Reset typing status on reconnect
