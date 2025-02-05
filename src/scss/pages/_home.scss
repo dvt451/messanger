@@ -15,11 +15,12 @@ $myMessageTextColor: #000;
 $containerPadding: toRem(30);
 
 .top {
-	background-color: #1e1e1e;
+	background-color: rgba(30, 30, 30, 0.7);
 	display: flex;
 	justify-content: space-between;
 	padding-inline: $containerPadding;
 	padding-block: toRem(20);
+	box-shadow: 0 0 5px rgba(255, 255, 255);
 	// .top__column
 
 	&__column {
@@ -77,14 +78,14 @@ $containerPadding: toRem(30);
 	display: flex;
 	flex-direction: column;
 	height: 100dvh;
-	background-color: #1e1e1e;
 	color: #ffffff;
+	background: url("../../../public/background.jpg") center no-repeat;
+	background-size: cover;
 	// .chat-window__messages
 
 	&__messages {
 		height: 100%;
 		overflow-y: auto;
-		background-color: #0d0d0d;
 		padding-inline: $containerPadding;
 		padding-block: toRem(50);
 	}
@@ -120,7 +121,7 @@ $containerPadding: toRem(30);
 	padding-inline: toRem(20);
 	padding-block: toRem(10);
 	gap: toRem(10);
-	background-color: #333333;
+	background-color: #3333334d;
 	input {
 		flex: 1;
 		padding: 10px;

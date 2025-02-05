@@ -9,8 +9,16 @@ export default function Chat() {
 
 	const { messages, setMessages } = useContext(MyContext);
 
-	const manName = 'Anonymus';
-	const girlNAme = 'Ani';
+	const [manName, setManName] = useState("Anonymus");
+	const [girlName, setGirlName] = useState("Ani");
+
+	const updateName = (newName) => {
+		if (isAnonymous) {
+			setGirlName(newName);
+		} else {
+			setManName(newName);
+		}
+	}
 
 	const [input, setInput] = useState("");
 	const [typing, setTyping] = useState(false); // State to track typing status
@@ -91,7 +99,7 @@ export default function Chat() {
 
 	return (
 		<div className={`chat-window${isAnonymous ? " anonymus" : ""}`}>
-			<TopBar isAnonymous={isAnonymous} manName={manName} girlNAme={girlNAme} />
+			<TopBar isAnonymous={isAnonymous} manName={manName} girlName={girlName} updateName={updateName} />
 			<div className="chat-window__messages">
 				<div className="chat-window__messages-wrapper">
 					{messages.map((msg, index) => (
@@ -100,7 +108,7 @@ export default function Chat() {
 							<span className="message__timestamp">{msg.timestamp}</span> {/* Display timestamp */}
 						</div>
 					))}
-					{typing && <div className="typing-indicator">{isAnonymous ? girlNAme : manName} is typing...</div>}
+					{typing && <div className="typing-indicator">{isAnonymous ? girlName : manName} is typing...</div>}
 					<div ref={chatEndRef}></div>
 				</div>
 			</div>

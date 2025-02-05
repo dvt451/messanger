@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { MyContext } from '../shared/hooks/MyContextProvider';
 
 export default function BurgerBody({ burgerState }) {
-	const { messages, setMessages } = useContext(MyContext);
 
 	const clearMessages = async () => {
 		try {
@@ -29,7 +28,6 @@ export default function BurgerBody({ burgerState }) {
 		<div className={`burger-body${burgerState ? ' _active' : ''}`}>
 			<h2 className='burger-body__title'>Options</h2>
 			<div className="burger-body__row">
-				<p className='burger-body__text'>Clear All Messeges:</p><button onClick={clearMessages} className='button button-clear'>Clear All</button>
 			</div>
 		</div>
 	)
