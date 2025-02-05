@@ -24,7 +24,7 @@ export default function TopBar({ isAnonymous, manName, girlName, updateName, use
 
 		// Send PUT request to update name in the database
 		try {
-			const response = await fetch('https://messanger-backend-production.up.railway.app/updateName', {
+			const response = await fetch('http://localhost:5000/updateName', {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
