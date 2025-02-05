@@ -9,15 +9,11 @@ export { MyContext };
 
 // Export the provider component as default
 export default function MyContextProvider({ children }) {
-  // Define the state or values you want to share
-  const num = 'Heeeeeeeeeeloooooooooo'
-  const opt= ['BMW','Mercedes','TESLA','FORD']
+	// Define the state or values you want to share
+	const [messages, setMessages] = useState([]);
 
-  const _ = {
-   num,
-   opt,
-  }
 
-  // Return the provider with the value
-  return <MyContext.Provider value={_}>{children}</MyContext.Provider>;
+
+	// Return the provider with the value
+	return <MyContext.Provider value={{ messages, setMessages }}>{children}</MyContext.Provider>;
 }

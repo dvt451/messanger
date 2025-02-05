@@ -1,1 +1,6 @@
 @use "./base" as *;
+.button {
+	background-color: rgb(163, 14, 32);
+	padding: toRem(10) toRem(20);
+	border-radius: toRem(3);
+}

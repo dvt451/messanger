@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import TopBar from "./TopBar";
+import { MyContext } from "../shared/hooks/MyContextProvider";
 
 export default function Chat() {
 	const location = useLocation();
 	const isAnonymous = location.pathname.includes("/dd"); // Check if it's your side
 
+	const { messages, setMessages } = useContext(MyContext);
+
 	const manName = 'Anonymus';
 	const girlNAme = 'Ani';
 
-	const [messages, setMessages] = useState([]);
 	const [input, setInput] = useState("");
 	const [typing, setTyping] = useState(false); // State to track typing status
 	const chatEndRef = useRef(null);
