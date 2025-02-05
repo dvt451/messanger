@@ -23,10 +23,10 @@ export default function Chat() {
 
 	// Connect to WebSocket server
 	useEffect(() => {
-		ws.current = new WebSocket("wss://messanger-backend-production.up.railway.app"); // Connect to WebSocket server
+		ws.current = new WebSocket("wss://messanger-backend-production.up.railway.app");
 
 		ws.current.onopen = () => {
-			setTyping(false); // Reset typing status on reconnect
+			setTyping(false); // Reset typing status when connected
 		};
 
 		ws.current.onmessage = async (event) => {
@@ -51,24 +51,34 @@ export default function Chat() {
 	}, [isAnonymous]);
 
 
+
 	const sendMessage = () => {
 		if (!input.trim()) return;
 
-		const messageData = {
-			text: input,
-			sender: isAnonymous ? "sender" : "replyer",
-			timestamp: getTimestamp(), // Add timestamp
-		};
+		// Ensure WebSocket is open before sending the message
+		if (ws.current.readyState === WebSocket.OPEN) {
+			const messageData = {
+				text: input,
+				sender: isAnonymous ? "sender" : "replyer",
+				timestamp: getTimestamp(), // Add timestamp
+			};
 
-		ws.current.send(JSON.stringify(messageData)); // Send message via WebSocket
-		// setMessages((prev) => [...prev, messageData]); // Add sent message locally
-		setInput("");
+			ws.current.send(JSON.stringify(messageData)); // Send message via WebSocket
+			setInput("");
+		} else {
+			console.error("WebSocket is not open. Ready state:", ws.current.readyState);
+		}
 	};
 
 	// Handle typing indicator broadcast
 	const handleTyping = () => {
 		if (input.trim()) {
-			ws.current.send(JSON.stringify({ text: "typing", sender: isAnonymous ? "sender" : "replyer" }));
+			// Ensure WebSocket is open before sending the typing message
+			if (ws.current.readyState === WebSocket.OPEN) {
+				ws.current.send(JSON.stringify({ text: "typing", sender: isAnonymous ? "sender" : "replyer" }));
+			} else {
+				console.error("WebSocket is not open. Ready state:", ws.current.readyState);
+			}
 		}
 	};
 
